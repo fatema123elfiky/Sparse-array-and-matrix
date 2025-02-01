@@ -15,7 +15,17 @@ void test1(){
     arr.print_arr_with_nonzero();
     cout<<arr.get_val(7)<<'\n';
 
+    Array_Linked_List arr2(10);
+    arr2.set_val(1,4);
+    arr2.set_val(3,7);
+    arr2.set_val(4,6);
+
+    arr.add(arr2);
+    arr.print_arr();
+
+
 }
+
 
 
 int main(){
