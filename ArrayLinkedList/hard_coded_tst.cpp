@@ -13,7 +13,7 @@ void test1(){
     arr.set_val(40,4);
     arr.print_arr();
     arr.print_arr_with_nonzero();
-    cout<<arr.get_val(7);
+    cout<<arr.get_val(7)<<'\n';
 
 }
 

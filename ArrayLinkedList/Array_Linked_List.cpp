@@ -134,13 +134,13 @@ void Array_Linked_List::print_arr(){
     int len=0;
     for (Node * node = head ; len<length ; len++) {
 
-        if(node->idx==len){
+        if(node&&node->idx==len){
             cout<<node->data;
             node=node->next;
         }else
             cout<<0;
 
-        if(len==length-2)
+        if(len==length-1)
             cout<<'\n';
         else
             cout<<' ';
