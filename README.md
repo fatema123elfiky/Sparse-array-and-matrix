@@ -3,5 +3,5 @@ It is about implementation of a Sparse array and matrix (2D) which helps in savi
 
 ## Key features :
 ### Sparse array 1D
-Its a data structure used espacially when there is a lot of unused memory and some only is used which may not be avaliable all the time.
-so ,  I made a container which uses only the determined values saving the wasted memory and that is so useful espically in the polynomial functions. it is a good example for the problem and that data structure solves that problem.
+It's a data structure used espacially when there is a lot of unused memory and some only is used which may not be avaliable all the time.
+So , I made a container which uses only the determined values saving the wasted memory and that is so useful espically in the polynomial functions. it is a good example for the problem and that data structure solves that problem.
