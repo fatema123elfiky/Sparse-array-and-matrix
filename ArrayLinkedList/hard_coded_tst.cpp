@@ -1,7 +1,7 @@
 //
 // Created by Fatma on 2/1/2025.
 //
-#include "Array_Linked_List.h"
+#include "Sparse_array_matrix/Array_Linked_List.h"
 #include <iostream>
 
 void test1(){
@@ -31,6 +31,8 @@ void test1(){
 int main(){
 
    test1();
-   cout<<"NO RTE";
+   cout<<"NO RTE\n";
+
+   cout<<"You are great";
 
 }

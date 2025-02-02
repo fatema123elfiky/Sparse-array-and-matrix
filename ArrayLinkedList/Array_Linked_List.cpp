@@ -50,8 +50,10 @@ void Array_Linked_List::insert_sorted(Node *node) {
                     link(cur->prev, node);
                     link(node, cur);
                     add_node(node);
-                }else
+                }else{
                     cur->data=node->data;
+                    delete node;// added
+                }
 
                 break;
             }
@@ -72,9 +74,9 @@ void Array_Linked_List::insert_front(Node *node) {
 
 void Array_Linked_List::insert_end(Node *node) {
 
-   link(tail,node);
-   tail=node;
-   add_node(node);
+    link(tail,node);
+    tail=node;
+    add_node(node);
 }
 
 void Array_Linked_List::link(Node *first, Node *second) {
@@ -99,35 +101,14 @@ int Array_Linked_List:: get_val(int idx){
 
 void Array_Linked_List::print_arr_with_nonzero() {
     for (Node* cur = head; cur ; cur=cur->next) {
-         cout<<cur->data<<' ';
+        cout<<cur->data<<' ';
     }
     cout<<'\n';
 }
 
 void Array_Linked_List::print_arr(){
 
-    //version 1
-    /*if(head->idx){
 
-        int cntr=head->idx+1;
-        while (cntr--)
-            cout<<0<<' ';
-    }
-
-    for (Node* node = head; node==tail ; node=node->next) {
-        cout<<node->data<<' ';
-        while ( node->next->idx - node->idx - 1 )
-            cout<<0<<' ';
-    }
-
-    cout<<tail->data<<' ';
-
-    while (length-1-tail->idx-1)
-        cout<<0<<' ';
-
-    cout<<'\n';
-
- */
 
 
     // version 2
@@ -162,8 +143,94 @@ void Array_Linked_List::add(const Array_Linked_List &arr) {
                 break;
             }
         }
-        if(!is_found)
+        if(!is_found&&cur->idx<length)
             set_val(cur->data,cur->idx);
 
     }
+}
+
+// revise
+Array_Linked_List::~Array_Linked_List(){
+
+    for (Node* cur = head; cur ; ) {
+        Node* node= cur;
+        cur=cur->next;
+        delete node;
+    }
+    cout<<"The Arraylist is destroyed\n";
+}
+
+// changes
+Array_Linked_List::Array_Linked_List(const Array_Linked_List &list) {
+
+
+    if(list.head){
+
+        head=new Node(list.head->data,list.head->idx);
+        tail=new Node(list.tail->data,list.tail->idx);
+
+        for (Node * cur = head; cur->next ; cur=cur->next) {
+        Node* node = new Node (cur->next->data,cur->next->idx);
+        link(cur,node);
+        }
+    
+    }
+    
+
+    length=list.length;
+    length_nodes=list.length_nodes;
+    for (int i = 0; i < list.vec_debug.size(); ++i) {
+        Node* node=new Node(list.vec_debug[i]->data,list.vec_debug[i]->idx);
+        vec_debug.push_back(node);
+    }
+
+}
+
+Array_Linked_List& Array_Linked_List:: operator=(const Array_Linked_List& list){
+
+    //self assignment
+    if(this==&list)
+        return *this;
+
+    while (head){
+        Node *cur=head->next;
+        delete head;
+        head=cur;
+    }
+    head= nullptr;
+    tail= nullptr;
+
+    for (int i = 0; i < vec_debug.size() ; ++i)
+        delete vec_debug[i];
+
+    vec_debug.clear();
+
+
+
+    if(list.head){
+
+        head=new Node(list.head->data,list.head->idx);
+        tail=new Node(list.tail->data,list.tail->idx);
+
+    
+        for (Node * cur = head; cur->next ; cur=cur->next) {
+        Node* node = new Node (cur->next->data,cur->next->idx);
+        link(cur,node);
+
+       }
+    
+    }
+    
+
+    length=list.length;
+    length_nodes=list.length_nodes;
+    for (int i = 0; i < list.vec_debug.size(); ++i) {
+        Node* node=new Node(list.vec_debug[i]->data,list.vec_debug[i]->idx);
+        vec_debug.push_back(node);
+    }
+
+    return *this;
+
+
+
 }
