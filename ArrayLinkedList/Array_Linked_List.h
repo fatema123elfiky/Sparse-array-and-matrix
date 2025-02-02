@@ -58,6 +58,7 @@ public:
     /*Array_Linked_List(const Array_Linked_List& )=delete;*/
    /*Array_Linked_List& operator=(const Array_Linked_List& )=delete;*/
 
+    Node* get_head();
     ~Array_Linked_List();
 };
 

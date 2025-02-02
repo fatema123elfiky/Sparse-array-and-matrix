@@ -188,6 +188,7 @@ Array_Linked_List::Array_Linked_List(const Array_Linked_List &list) {
 
 Array_Linked_List& Array_Linked_List:: operator=(const Array_Linked_List& list){
 
+
     //self assignment
     if(this==&list)
         return *this;
@@ -234,3 +235,10 @@ Array_Linked_List& Array_Linked_List:: operator=(const Array_Linked_List& list){
 
 
 }
+
+
+Node* Array_Linked_List::get_head(){
+
+    return head;
+}
+
