@@ -43,13 +43,13 @@ private:
 
 public:
 
-    Sparse_Matrix(int row , int column);
+    Sparse_Matrix(int row , int column=1);
     ~Sparse_Matrix();
 
     Sparse_Matrix(const Sparse_Matrix & )=delete;
     Sparse_Matrix& operator=(const Sparse_Matrix & )=delete;
 
-    void set_val(int val , int row, int column);
+    void set_val(int val , int row, int column=0);
     void get_val(int row , int column);
     void print_matrix();
     void print_nonzero_matrix();
