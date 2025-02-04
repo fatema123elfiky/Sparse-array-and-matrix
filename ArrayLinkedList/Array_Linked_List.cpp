@@ -149,8 +149,8 @@ void Array_Linked_List::add(const Array_Linked_List &arr) {
 
     }*/
    //version 2
-   for (Node* curr = arr.head,*r_repersent=head ; curr&&r_repersent; ){
-                
+    Node* curr, *r_repersent;
+   for ( curr = arr.head,r_repersent=head ; curr&&r_repersent; ){
                 if(curr->idx==r_repersent->idx){
 
                   r_repersent->data+=curr->data;
@@ -166,7 +166,11 @@ void Array_Linked_List::add(const Array_Linked_List &arr) {
                   r_repersent=r_repersent->next;
                 }
                   
-   } 
+   }
+   while(curr&&curr->idx<length){
+       set_val(curr->data,curr->idx);
+       curr=curr->next;
+   }
 }
 
 // revise
@@ -187,12 +191,14 @@ Array_Linked_List::Array_Linked_List(const Array_Linked_List &list) {
     if(list.head){
 
         head=new Node(list.head->data,list.head->idx);
-        tail=new Node(list.tail->data,list.tail->idx);
+        //tail=new Node(list.tail->data,list.tail->idx);
 
-        for (Node * cur = head; cur->next ; cur=cur->next) {
+        Node * cur;
+        for ( cur = head; cur->next ; cur=cur->next) {
         Node* node = new Node (cur->next->data,cur->next->idx);
         link(cur,node);
         }
+        tail=cur;
     
     }
     
@@ -231,15 +237,16 @@ Array_Linked_List& Array_Linked_List:: operator=(const Array_Linked_List& list){
     if(list.head){
 
         head=new Node(list.head->data,list.head->idx);
-        tail=new Node(list.tail->data,list.tail->idx);
+        //tail=new Node(list.tail->data,list.tail->idx);
 
-    
-        for (Node * cur = head; cur->next ; cur=cur->next) {
-        Node* node = new Node (cur->next->data,cur->next->idx);
-        link(cur,node);
+        Node * cur;
+        for ( cur = head; cur->next ; cur=cur->next) {
+            Node* node = new Node (cur->next->data,cur->next->idx);
+            link(cur,node);
+        }
+        tail=cur;
 
-       }
-    
+
     }
     
 
