@@ -9,15 +9,15 @@
 
 struct node{
 
-    Array_Linked_List data{};
+    Array_Linked_List data{1};//????
     int idx{};// row and the column is with the data in the linked list
     node * next{};
     node * prev{};
     node(const Array_Linked_List& data , int idx): data(data),idx(idx){}
-    ~node(){
+    /*~node(){
         cout<<"The node of ";data.print_arr();
         cout<<"is detstructed \n";
-    }
+    }*/
 };
 
 
@@ -39,9 +39,13 @@ private:
     void insert_sorted(node * n_node);
     void link(node * first, node * second);
 
+    //void set_node(node * n_node);
+
+    
+
 public:
 
-    Sparse_Matrix(int row =0, int column=0);
+    Sparse_Matrix(int row , int column);
     ~Sparse_Matrix();
 
     Sparse_Matrix(const Sparse_Matrix & )=delete;
