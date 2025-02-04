@@ -22,7 +22,7 @@ struct Node {
     Node*next{};
     Node*prev{};
     Node(int data,int idx):data(data) , idx(idx){}
-   ~Node(){ cout<<"The Node "<<data<<"which is "<<this<<" is destruted\n";}
+   //~Node(){ cout<<"The Node "<<data<<"which is "<<this<<" is destruted\n";}
 
 };
 
@@ -43,7 +43,7 @@ private:
 
 public:
 
-    Array_Linked_List(int length=0);//
+    Array_Linked_List(int length);//
     Array_Linked_List(const Array_Linked_List& );//
     Array_Linked_List& operator=(const Array_Linked_List& list);
 

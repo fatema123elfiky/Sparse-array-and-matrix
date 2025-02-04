@@ -133,7 +133,8 @@ void Array_Linked_List::print_arr(){
 
 void Array_Linked_List::add(const Array_Linked_List &arr) {
 
-    for (Node* cur = arr.head; cur ; cur=cur->next ) {
+// version 1
+    /*for (Node* cur = arr.head; cur ; cur=cur->next ) {
 
         bool is_found=false;
         for (Node* node = head; node ; node=node->next) {
@@ -146,7 +147,26 @@ void Array_Linked_List::add(const Array_Linked_List &arr) {
         if(!is_found&&cur->idx<length)
             set_val(cur->data,cur->idx);
 
-    }
+    }*/
+   //version 2
+   for (Node* curr = arr.head,*r_repersent=head ; curr&&r_repersent; ){
+                
+                if(curr->idx==r_repersent->idx){
+
+                  r_repersent->data+=curr->data;
+                  curr=curr->next;
+                  r_repersent=r_repersent->next;
+
+                }else if(/*curr->idx<length&&*/curr->idx<r_repersent->idx){
+                  set_val(curr->data,curr->idx);
+                  curr=curr->next;
+                }
+                else {
+                  //set_val(curr->data,curr->idx);
+                  r_repersent=r_repersent->next;
+                }
+                  
+   } 
 }
 
 // revise
@@ -157,7 +177,7 @@ Array_Linked_List::~Array_Linked_List(){
         cur=cur->next;
         delete node;
     }
-    cout<<"The Arraylist is destroyed\n";
+    //cout<<"The Arraylist is destroyed\n";
 }
 
 // changes
