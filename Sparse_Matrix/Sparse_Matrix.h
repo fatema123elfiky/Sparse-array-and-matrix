@@ -39,9 +39,7 @@ private:
     void insert_sorted(node * n_node);
     void link(node * first, node * second);
 
-    //void set_node(node * n_node);
-
-    
+    void set_node(node * n_node);
 
 public:
 

@@ -155,7 +155,8 @@ void Sparse_Matrix::add(const Sparse_Matrix &matrix){
 
 
      node * repersent =head;
-     for (node* cur = matrix.head; cur&&repersent; )
+     node * cur;
+     for ( cur = matrix.head; cur&&repersent; )
      {
         if(repersent->idx==cur->idx){
 
@@ -191,6 +192,12 @@ void Sparse_Matrix::add(const Sparse_Matrix &matrix){
         
         
      }
+
+    while (cur&&cur->idx<this->row){
+        node * n_node=new node(cur->data,cur->idx);
+        insert_sorted(n_node);
+        cur=cur->next;
+    }
      
 
 }
