@@ -30,16 +30,17 @@ void test1(){
 // test for the sparse
 
 void test_col() {
-	ColumnLinkedList collst(12);
-	collst.set_value(10, 10);
-	collst.set_value(5, 5);
-	collst.set_value(2, 2);
-	collst.set_value(7, 7);
-	collst.set_value(4, 4);
+	Sparse_Matrix collst(12);
+	collst.set_val(10, 10);
+	collst.set_val(5, 5);
+	collst.set_val(2, 2);
+	collst.set_val(7, 7);
+	collst.set_val(4, 4);
 	//collst.print_row();
-	collst.print_row_nonzero();
+	collst.print_nonzero_matrix();
+    cout<<"\n\n\n";
 	collst.add(collst);
-	collst.print_row_nonzero();
+	collst.print_nonzero_matrix();
 }
 
 void test_sparse() {
@@ -69,7 +70,8 @@ void test_sparse() {
 int main(){
 
     //test1();
-   test_sparse();
+   //test_sparse();
+   //test_col();
    cout<<"NO RTE\n";
 
    cout<<"You are great";
